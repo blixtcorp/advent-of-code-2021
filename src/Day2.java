@@ -15,6 +15,7 @@ public class Day2 {
         }
 
         partA(commands);
+        partB(commands);
     }
 
     static void partA(ArrayList<String> commands){
@@ -34,5 +35,26 @@ public class Day2 {
 
         int result = horizontal * depth;
         System.out.println("The result is: " + result);
+    }
+
+    static void partB(ArrayList<String> commands){
+        int horizontal = 0;
+        int depth = 0;
+        int aim = 0;
+
+        for (String command : commands) {
+            String[] cmd = command.split(" ");
+            if(cmd[0].equals("down")){
+                aim += Integer.parseInt(cmd[1]);
+            } else if(cmd[0].equals("up")){
+                aim -= Integer.parseInt(cmd[1]);
+            } else if(cmd[0].equals("forward")){
+                horizontal += Integer.parseInt(cmd[1]);
+                depth += Integer.parseInt(cmd[1]) * aim;
+            }
+        }
+
+        int result = horizontal * depth;
+        System.out.println("The result in part B is: " + result);
     }
 }
